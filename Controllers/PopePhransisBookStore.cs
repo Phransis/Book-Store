@@ -18,7 +18,7 @@ namespace PopePhransisBookStore.Controllers
             this.bookRepository = bookRepository;
         }
 
-        // POST: api/PopePhransisBookStore/CreateBook
+        
         [HttpPost("CreateBook")]
         public async Task<ActionResult<Book>> CreateBook([FromBody] Book book)
         {
@@ -31,7 +31,7 @@ namespace PopePhransisBookStore.Controllers
             return CreatedAtAction(nameof(GetBook), new { id = createdBook.Id }, createdBook);
         }
 
-        // GET: api/PopePhransisBookStore/GetBook/1
+        
         [HttpGet("GetBook/{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
@@ -43,7 +43,7 @@ namespace PopePhransisBookStore.Controllers
             return Ok(book);
         }
 
-        // GET: api/PopePhransisBookStore/ListOfBooks
+       
         [HttpGet("ListOfBooks")]
         public async Task<ActionResult<List<Book>>> ListOfBooks()
         {
@@ -51,7 +51,7 @@ namespace PopePhransisBookStore.Controllers
             return Ok(books);
         }
 
-        // PUT: api/PopePhransisBookStore/UpdateBook/1
+        
         [HttpPut("UpdateBook/{id}")]
         public async Task<ActionResult<Book>> UpdateBook(int id, [FromBody] Book updatedBook)
         {
@@ -70,7 +70,7 @@ namespace PopePhransisBookStore.Controllers
             return Ok(result);
         }
 
-        // DELETE: api/PopePhransisBookStore/DeleteBook/1
+       
         [HttpDelete("DeleteBook/{id}")]
         public ActionResult DeleteBook(int id)
         {

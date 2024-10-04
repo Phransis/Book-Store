@@ -13,7 +13,6 @@ namespace PopePhransisBookStore.Repository
             {
                 allBooks = new Dictionary<int, Book>();
 
-                // Seed some books for testing
                 allBooks[1] = new Book { Id = 1, BookName = "FB", Category = "1", Description = "", Price = 3 };
                 allBooks[2] = new Book { Id = 2, BookName = "SB", Category = "2", Description = "", Price = 3 };
                 allBooks[3] = new Book { Id = 3, BookName = "TB", Category = "1", Description = "", Price = 3 };
@@ -24,7 +23,7 @@ namespace PopePhransisBookStore.Repository
                 allBooks[8] = new Book { Id = 8, BookName = "8D", Category = "2", Description = "", Price = 3 };
             }
 
-            // Create a new book
+           
             public Task<Book> CreateBook(Book book)
             {
                 if (book.Id == 0)
@@ -37,24 +36,23 @@ namespace PopePhransisBookStore.Repository
                 return Task.FromResult(book);
             }
 
-            // Get a book by ID
             public Task<Book> GetBook(int id)
             {
                 if (allBooks.ContainsKey(id))
                 {
                     return Task.FromResult(allBooks[id]);
                 }
-                return Task.FromResult<Book>(null);  // Return null if the book is not found
+                return Task.FromResult<Book>(null);  
             }
 
      
             public Task<List<Book>> ListOfBooks()
             {
-                var books = allBooks.Values.ToList(); // Convert dictionary values to a list
+                var books = allBooks.Values.ToList(); 
                 return Task.FromResult(books);
             }
 
-            // Update book details
+          
             public Task<Book> UpdateBook(Book updatedBook)
             {
                 if (allBooks.ContainsKey(updatedBook.Id))
@@ -65,21 +63,21 @@ namespace PopePhransisBookStore.Repository
                     existingBook.Description = updatedBook.Description;
                     existingBook.Price = updatedBook.Price;
 
-                    return Task.FromResult(existingBook); // Return the updated book
+                    return Task.FromResult(existingBook); 
                 }
 
-                return Task.FromResult<Book>(null); // Return null if the book does not exist
+                return Task.FromResult<Book>(null); 
             }
 
-            // Delete a book by ID
+         
             public bool DeleteBook(int id)
             {
                 if (allBooks.ContainsKey(id))
                 {
                     allBooks.Remove(id);
-                    return true; // Book successfully deleted
+                    return true; 
                 }
-                return false; // Book not found
+                return false; 
             }
         }
     }
