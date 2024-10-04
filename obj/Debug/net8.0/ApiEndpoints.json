@@ -1,0 +1,121 @@
+[
+  {
+    "ContainingType": "PopePhransisBookStore.Controllers.PopePhransisBookStore",
+    "Method": "CreateBook",
+    "RelativePath": "api/PopePhransisBookStore/CreateBook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "book",
+        "Type": "PopePhransisBookStore.Model.Book",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PopePhransisBookStore.Model.Book",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "PopePhransisBookStore.Controllers.PopePhransisBookStore",
+    "Method": "DeleteBook",
+    "RelativePath": "api/PopePhransisBookStore/DeleteBook/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PopePhransisBookStore.Controllers.PopePhransisBookStore",
+    "Method": "GetBook",
+    "RelativePath": "api/PopePhransisBookStore/GetBook/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PopePhransisBookStore.Model.Book",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "PopePhransisBookStore.Controllers.PopePhransisBookStore",
+    "Method": "ListOfBooks",
+    "RelativePath": "api/PopePhransisBookStore/ListOfBooks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[PopePhransisBookStore.Model.Book, PopePhransisBookStore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "PopePhransisBookStore.Controllers.PopePhransisBookStore",
+    "Method": "UpdateBook",
+    "RelativePath": "api/PopePhransisBookStore/UpdateBook/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedBook",
+        "Type": "PopePhransisBookStore.Model.Book",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "PopePhransisBookStore.Model.Book",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
