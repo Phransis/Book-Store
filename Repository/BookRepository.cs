@@ -1,85 +1,71 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.EntityFrameworkCore;
+using PopePhransisBookStore.Data;
 using PopePhransisBookStore.Model;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PopePhransisBookStore.Repository
 {
-   
-        public class BookRepository : IBookRepository
+    public class BookRepository : IBookRepository
+    {
+        private readonly ApplicationDbContext _context;
+
+        public BookRepository(ApplicationDbContext context)
         {
-            private Dictionary<int, Book> allBooks;
+            _context = context;
+        }
 
-            public BookRepository()
-            {
-                allBooks = new Dictionary<int, Book>();
+        public async Task<Book> CreateBook(Book book)
+        {
+            
+            await _context.PopePhransisBookStore.AddAsync(book);
+            await _context.SaveChangesAsync();
+            return book;
+        }
 
-                allBooks[1] = new Book { Id = 1, BookName = "FB", Category = "1", Description = "", Price = 3 };
-                allBooks[2] = new Book { Id = 2, BookName = "SB", Category = "2", Description = "", Price = 3 };
-                allBooks[3] = new Book { Id = 3, BookName = "TB", Category = "1", Description = "", Price = 3 };
-                allBooks[4] = new Book { Id = 4, BookName = "4B", Category = "2", Description = "", Price = 3 };
-                allBooks[5] = new Book { Id = 5, BookName = "5B", Category = "1", Description = "", Price = 3 };
-                allBooks[6] = new Book { Id = 6, BookName = "6B", Category = "2", Description = "", Price = 3 };
-                allBooks[7] = new Book { Id = 7, BookName = "7B", Category = "1", Description = "", Price = 3 };
-                allBooks[8] = new Book { Id = 8, BookName = "8D", Category = "2", Description = "", Price = 3 };
-            }
-
+        public async Task<Book> GetBook(int id)
+        {
            
-            public Task<Book> CreateBook(Book book)
+
+            return await _context.PopePhransisBookStore.FindAsync(id);
+        }
+
+        public async Task<List<Book>> ListOfBooks()
+        {
+            
+            return await _context.PopePhransisBookStore.ToListAsync();
+        }
+
+        public async Task<Book> UpdateBook(Book updatedBook)
+        {
+            
+            var existingBook = await _context.PopePhransisBookStore.FindAsync(updatedBook.Id);
+            if (existingBook != null)
             {
-                if (book.Id == 0)
-                {
-                    int key = allBooks.Count + 1;
-                    while (allBooks.ContainsKey(key)) { key++; }
-                    book.Id = key;
-                }
-                allBooks[book.Id] = book;
-                return Task.FromResult(book);
+                existingBook.BookName = updatedBook.BookName;
+                existingBook.Category = updatedBook.Category;
+                existingBook.Description = updatedBook.Description;
+                existingBook.Price = updatedBook.Price;
+
+                await _context.SaveChangesAsync();
+                return existingBook;
             }
 
-            public Task<Book> GetBook(int id)
+            return null; 
+        }
+
+
+       public async Task  <bool> DeleteBook(int id)
+        {
+            var existingBook = await _context.PopePhransisBookStore.FindAsync(id);
+            if (existingBook != null)
             {
-                if (allBooks.ContainsKey(id))
-                {
-                    return Task.FromResult(allBooks[id]);
-                }
-                return Task.FromResult<Book>(null);  
+                _context.PopePhransisBookStore.Remove(existingBook);
+                await _context.SaveChangesAsync();
+                return true;
             }
 
-     
-            public Task<List<Book>> ListOfBooks()
-            {
-                var books = allBooks.Values.ToList(); 
-                return Task.FromResult(books);
-            }
-
-          
-            public Task<Book> UpdateBook(Book updatedBook)
-            {
-                if (allBooks.ContainsKey(updatedBook.Id))
-                {
-                    var existingBook = allBooks[updatedBook.Id];
-                    existingBook.BookName = updatedBook.BookName;
-                    existingBook.Category = updatedBook.Category;
-                    existingBook.Description = updatedBook.Description;
-                    existingBook.Price = updatedBook.Price;
-
-                    return Task.FromResult(existingBook); 
-                }
-
-                return Task.FromResult<Book>(null); 
-            }
-
-         
-            public bool DeleteBook(int id)
-            {
-                if (allBooks.ContainsKey(id))
-                {
-                    allBooks.Remove(id);
-                    return true; 
-                }
-                return false; 
-            }
+            return false;
         }
     }
-
-
+}

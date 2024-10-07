@@ -8,7 +8,7 @@ namespace PopePhransisBookStore.Repository
         Task<Book> GetBook(int id);
         Task<List<Book>>ListOfBooks();
         Task<Book> UpdateBook(Book book);
-        bool DeleteBook(int id);
+       Task <bool> DeleteBook(int id);
         
 
 

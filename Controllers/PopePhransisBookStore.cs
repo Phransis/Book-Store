@@ -4,20 +4,18 @@ using PopePhransisBookStore.Model;
 using PopePhransisBookStore.Repository;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PopePhransisBookStore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PopePhransisBookStore : ControllerBase
+    public class PopePhransisBookStore(IBookRepository bookRepository) : ControllerBase
     {
-        private readonly IBookRepository bookRepository;
+        private readonly IBookRepository bookRepository = bookRepository;
 
-        public PopePhransisBookStore(IBookRepository bookRepository)
-        {
-            this.bookRepository = bookRepository;
-        }
 
+        [Authorize]
         
         [HttpPost("CreateBook")]
         public async Task<ActionResult<Book>> CreateBook([FromBody] Book book)
@@ -28,10 +26,11 @@ namespace PopePhransisBookStore.Controllers
             }
 
             var createdBook = await bookRepository.CreateBook(book);
+           
             return CreatedAtAction(nameof(GetBook), new { id = createdBook.Id }, createdBook);
         }
 
-        
+        [Authorize]
         [HttpGet("GetBook/{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
@@ -43,7 +42,7 @@ namespace PopePhransisBookStore.Controllers
             return Ok(book);
         }
 
-       
+        [Authorize]
         [HttpGet("ListOfBooks")]
         public async Task<ActionResult<List<Book>>> ListOfBooks()
         {
@@ -70,16 +69,17 @@ namespace PopePhransisBookStore.Controllers
             return Ok(result);
         }
 
-       
+
         [HttpDelete("DeleteBook/{id}")]
-        public ActionResult DeleteBook(int id)
+        public async Task<ActionResult> DeleteBook(int id)
         {
-            var isDeleted = bookRepository.DeleteBook(id);
+            var isDeleted = await bookRepository.DeleteBook(id); 
             if (isDeleted)
             {
-                return Ok();
+                return Ok(); 
             }
-            return NotFound();
+            return NotFound(); 
         }
+
     }
 }
