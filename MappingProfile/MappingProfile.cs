@@ -6,11 +6,12 @@ using PopePhransisBookStore.Model;
 
 namespace PopePhransisBookStore.MappingProfile
 {
-    public class MappingProfile : Profile
+    public class MappingProfile1 : Profile
     {
-        public MappingProfile()
+        public MappingProfile1()
         {
             CreateMap<Book, BookDTO>().ReverseMap();
+
         }
     }
 }
