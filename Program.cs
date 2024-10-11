@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PopePhransisBookStore.Data;
+using PopePhransisBookStore.DTO;
+using PopePhransisBookStore.MappingProfile;
+using PopePhransisBookStore.Model;
 using PopePhransisBookStore.Repository;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -26,6 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServ
 (builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 var app = builder.Build();

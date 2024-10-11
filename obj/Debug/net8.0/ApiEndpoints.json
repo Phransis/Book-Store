@@ -8,14 +8,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "book",
-        "Type": "PopePhransisBookStore.Model.Book",
+        "Name": "bookDto",
+        "Type": "PopePhransisBookStore.DTO.BookDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "PopePhransisBookStore.Model.Book",
+        "Type": "PopePhransisBookStore.DTO.BookDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -57,7 +57,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "PopePhransisBookStore.Model.Book",
+        "Type": "PopePhransisBookStore.DTO.BookDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -77,7 +77,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[PopePhransisBookStore.Model.Book, PopePhransisBookStore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[PopePhransisBookStore.DTO.BookDTO, PopePhransisBookStore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -101,14 +101,14 @@
         "IsRequired": true
       },
       {
-        "Name": "updatedBook",
-        "Type": "PopePhransisBookStore.Model.Book",
+        "Name": "updatedBookDto",
+        "Type": "PopePhransisBookStore.DTO.BookDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "PopePhransisBookStore.Model.Book",
+        "Type": "PopePhransisBookStore.DTO.BookDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",

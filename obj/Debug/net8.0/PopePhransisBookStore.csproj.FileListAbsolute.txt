@@ -145,3 +145,5 @@ C:\Users\POPE\Documents\C#\Steps\PopePhransisBookStore\PopePhransisBookStore\bin
 C:\Users\POPE\Documents\C#\Steps\PopePhransisBookStore\PopePhransisBookStore\bin\Debug\net8.0\Scrutor.dll
 C:\Users\POPE\Documents\C#\Steps\PopePhransisBookStore\PopePhransisBookStore\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\POPE\Documents\C#\Steps\PopePhransisBookStore\PopePhransisBookStore\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Users\POPE\Documents\C#\Steps\PopePhransisBookStore\PopePhransisBookStore\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\POPE\Documents\C#\Steps\PopePhransisBookStore\PopePhransisBookStore\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
